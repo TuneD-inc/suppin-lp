@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUPPIN | 招待制就活ラウンジ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F2EDE5;
+      --cream-deep: #EAE3D8;
+      --white:      #FAFAF7;
+      --forest:     #1C2A14;
+      --olive:      #3D5A22;
+      --olive-mid:  #5C7A35;
+      --olive-pale: #E6EDD8;
+      --warm-gray:  #7A7668;
+      --light-gray: #ADA89E;
+      --border:     #D4CEC4;
+      --black:      #18180F;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 60px;
+      background: rgba(242, 237, 229, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--forest);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--forest); }
+
+    .nav-cta {
+      border: 1.5px solid var(--forest) !important;
+      color: var(--forest) !important;
+      padding: 7px 20px;
+      transition: all 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--forest) !important;
+      color: var(--cream) !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--cream);
+      padding-top: 60px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 56px 80px 64px;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--olive-mid);
+      border: 1px solid var(--olive-mid);
+      padding: 5px 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(28px, 3.2vw, 48px);
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1.45;
+      letter-spacing: 0.01em;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 0.45em;
+      color: var(--olive-mid);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--warm-gray);
+      max-width: 400px;
+      line-height: 1.9;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--forest);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 15px 36px;
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: all 0.25s;
+    }
+
+    .btn-dark::after { content: '→'; transition: transform 0.2s; }
+    .btn-dark:hover { background: var(--olive); }
+    .btn-dark:hover::after { transform: translateX(4px); }
+
+    .btn-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--warm-gray);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-text:hover { color: var(--forest); border-color: var(--forest); }
+
+    /* ── HERO STATS ── */
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat {
+      padding-right: 28px;
+      margin-right: 28px;
+      border-right: 1px solid var(--border);
+    }
+
+    .hero-stat:last-child { border-right: none; margin-right: 0; }
+
+    .hero-stat-n {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--forest);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-stat-n em {
+      font-style: normal;
+      font-size: 16px;
+      color: var(--olive-mid);
+      margin-left: 2px;
+    }
+
+    .hero-stat-l {
+      font-size: 11px;
+      color: var(--light-gray);
+      margin-top: 5px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SECTION ── */
+    .sec { padding: 104px 48px; }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .sec-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      margin-bottom: 14px;
+    }
+
+    .sec-title {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--forest);
+      margin-bottom: 48px;
+    }
+
+    /* ── PROBLEM ── */
+    .problem { background: var(--forest); }
+
+    .problem .sec-label { color: rgba(255,255,255,0.3); }
+    .problem .sec-title { color: var(--cream); }
+
+    .prob-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 40px;
+    }
+
+    .prob-item {
+      background: var(--forest);
+      padding: 40px 36px;
+    }
+
+    .prob-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--olive-mid);
+      margin-bottom: 14px;
+    }
+
+    .prob-item h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .prob-item p {
+      font-size: 13px;
+      color: rgba(242,237,229,0.5);
+      line-height: 1.9;
+    }
+
+    .prob-bridge {
+      background: var(--olive-pale);
+      padding: 36px 44px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .prob-bridge p {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1.6;
+    }
+
+    /* ── OVERVIEW ── */
+    .overview { background: var(--white); }
+
+    .ov-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .ov-text p {
+      font-size: 15px;
+      color: var(--warm-gray);
+      line-height: 2.1;
+      margin-bottom: 20px;
+    }
+
+    .ov-text p strong { color: var(--forest); font-weight: 700; }
+
+    .ov-card {
+      background: var(--olive-pale);
+      padding: 36px 32px;
+    }
+
+    .ov-card-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--olive-mid);
+      margin-bottom: 24px;
+    }
+
+    .ov-member {
+      padding: 18px 0;
+      border-top: 1px solid rgba(61,90,34,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ov-member:first-of-type { border-top: none; }
+
+    .ov-member-name {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 2px;
+    }
+
+    .ov-member-note {
+      font-size: 11px;
+      color: var(--olive-mid);
+    }
+
+    .ov-member-n {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--forest);
+      letter-spacing: -0.02em;
+    }
+
+    .ov-member-n span {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px;
+      color: var(--light-gray);
+    }
+
+    /* ── STRENGTHS ── */
+    .strengths { background: var(--cream); }
+
+    .str-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .str-item {
+      background: var(--white);
+      padding: 44px 36px;
+      border: 1px solid var(--border);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .str-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(28,42,20,0.08);
+    }
+
+    .str-n {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--light-gray);
+      margin-bottom: 8px;
+    }
+
+    .str-tag {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--olive-mid);
+      border: 1px solid var(--olive-mid);
+      padding: 3px 10px;
+      margin-bottom: 20px;
+    }
+
+    .str-item h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--forest);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .str-item p {
+      font-size: 13px;
+      color: var(--warm-gray);
+      line-height: 2;
+    }
+
+    /* ── SCENE ── */
+    .scene { background: var(--white); }
+
+    .scene-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .scene-video {
+      position: relative;
+      border-radius: 0;
+      overflow: hidden;
+      background: var(--cream-deep);
+    }
+
+    .scene-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .scene-photos {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .scene-photo {
+      overflow: hidden;
+      background: var(--cream-deep);
+      position: relative;
+    }
+
+    .scene-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .scene-photo:hover img { transform: scale(1.03); }
+
+    .scene-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      background: var(--cream-deep);
+      border: 2px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .scene-photo-placeholder span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--light-gray);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .scene-layout { grid-template-columns: 1fr; }
+      .scene-video { min-height: 480px; }
+      .scene-photos { grid-template-rows: auto auto; }
+      .scene-photo { min-height: 260px; }
+    }
+
+    /* ── RESULTS ── */
+    .results { background: var(--olive-pale); }
+
+    .res-nums {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid rgba(61,90,34,0.2);
+      background: rgba(61,90,34,0.1);
+      margin-bottom: 48px;
+    }
+
+    .res-cell {
+      background: var(--olive-pale);
+      padding: 40px 32px;
+      border-right: 1px solid rgba(61,90,34,0.15);
+      border-bottom: 1px solid rgba(61,90,34,0.15);
+    }
+
+    .res-cell:nth-child(4) { border-right: none; }
+    .res-cell:nth-child(n+5) { border-bottom: none; }
+
+    .res-n {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--forest);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .res-n sub {
+      font-size: 18px;
+      vertical-align: baseline;
+      color: var(--olive-mid);
+    }
+
+    .res-label {
+      font-size: 12px;
+      color: var(--olive);
+      line-height: 1.6;
+    }
+
+    .res-list { display: flex; flex-direction: column; gap: 0; }
+
+    .res-list-item {
+      padding: 20px 0;
+      border-top: 1px solid rgba(61,90,34,0.2);
+      font-size: 14px;
+      color: var(--forest);
+      line-height: 1.7;
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .res-list-item:last-child { border-bottom: 1px solid rgba(61,90,34,0.2); }
+
+    .res-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--olive-mid);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* ── WHY ── */
+    .why { background: var(--white); }
+
+    .why-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .why-block {
+      background: var(--cream);
+      padding: 48px 44px;
+      border: 1px solid var(--border);
+    }
+
+    .why-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--olive-mid);
+      margin-bottom: 16px;
+    }
+
+    .why-block h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--forest);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .why-block p {
+      font-size: 13px;
+      color: var(--warm-gray);
+      line-height: 2;
+    }
+
+    .why-highlight {
+      background: var(--forest);
+      padding: 56px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .why-highlight p {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    .why-highlight p em {
+      font-style: normal;
+      color: var(--olive-mid);
+    }
+
+    .why-big {
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .why-big-n {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 80px;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .why-big-n em {
+      font-style: normal;
+      font-size: 32px;
+      color: var(--olive-mid);
+    }
+
+    .why-big-l {
+      font-size: 11px;
+      color: rgba(242,237,229,0.35);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* ── EVENT FLOW ── */
+    .flow { background: var(--cream); }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .flow-item {
+      background: var(--white);
+      padding: 40px 32px;
+      border: 1px solid var(--border);
+    }
+
+    .flow-part {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      margin-bottom: 6px;
+    }
+
+    .flow-time {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: var(--olive-mid);
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .flow-item h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--forest);
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+
+    .flow-item p {
+      font-size: 13px;
+      color: var(--warm-gray);
+      line-height: 1.95;
+    }
+
+    /* ── SERVICE FLOW ── */
+    .sflow { background: var(--white); }
+
+    .sflow-list { display: flex; flex-direction: column; }
+
+    .sflow-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      border-top: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .sflow-item:last-child { border-bottom: 1px solid var(--border); }
+    .sflow-item:hover { background: var(--cream); }
+
+    .sflow-step {
+      padding: 32px 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--light-gray);
+      border-right: 1px solid var(--border);
+    }
+
+    .sflow-body {
+      padding: 32px 0 32px 36px;
+    }
+
+    .sflow-body h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+
+    .sflow-body p {
+      font-size: 13px;
+      color: var(--warm-gray);
+      line-height: 1.9;
+    }
+
+    /* ── CTA ── */
+    .cta { background: var(--forest); padding: 104px 48px; text-align: center; }
+
+    .cta h2 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: clamp(32px, 4.5vw, 60px);
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 14px;
+      color: rgba(242,237,229,0.5);
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    .btn-cream {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cream);
+      color: var(--forest);
+      text-decoration: none;
+      padding: 16px 44px;
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: all 0.2s;
+    }
+
+    .btn-cream::after { content: '→'; transition: transform 0.2s; }
+    .btn-cream:hover { background: var(--olive-pale); }
+    .btn-cream:hover::after { transform: translateX(4px); }
+
+    /* ── FAQ ── */
+    .faq { background: var(--cream); }
+
+    .faq-list { display: flex; flex-direction: column; }
+
+    .faq-item { border-top: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .faq-q {
+      padding: 26px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-q-inner {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .faq-q-mark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--olive-mid);
+      flex-shrink: 0;
+    }
+
+    .faq-q-text {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1.5;
+    }
+
+    .faq-toggle {
+      width: 28px; height: 28px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      color: var(--light-gray);
+      transition: all 0.2s;
+    }
+
+    .faq-item.open .faq-toggle {
+      background: var(--forest);
+      border-color: var(--forest);
+      color: var(--cream);
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      padding: 0 0 24px 32px;
+      font-size: 13px;
+      color: var(--warm-gray);
+      line-height: 2;
+      display: none;
+      max-width: 680px;
+    }
+
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--forest);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .contact-left p {
+      font-size: 14px;
+      color: var(--warm-gray);
+      line-height: 2;
+      margin-bottom: 32px;
+    }
+
+    .contact-pts { display: flex; flex-direction: column; }
+
+    .contact-pt {
+      padding: 15px 0;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--forest);
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .contact-pt:last-child { border-bottom: 1px solid var(--border); }
+
+    .contact-pt::before {
+      content: '';
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--olive-mid);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* ── FORM ── */
+    .form {
+      background: var(--cream);
+      padding: 44px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-label {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 8px;
+    }
+
+    .form-label em { font-style: normal; color: var(--olive-mid); margin-left: 3px; }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 13px 15px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px;
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      appearance: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--light-gray); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--forest); }
+
+    .form-group select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ADA89E' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+    }
+
+    .form-group textarea { resize: none; height: 96px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--forest);
+      color: var(--cream);
+      border: none;
+      padding: 17px;
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 6px;
+    }
+
+    .form-submit:hover { background: var(--olive); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--cream);
+    }
+
+    .footer-copy {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(242,237,229,0.3);
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .sec, .problem, .overview, .strengths, .results, .why, .flow, .sflow, .cta, .faq, .contact { padding: 64px 24px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 48px 24px 40px; }
+      .hero-right { height: 280px; }
+      .hero-stats { flex-wrap: wrap; gap: 16px; margin-top: 32px; }
+      .hero-stat { border-right: none; padding-right: 0; margin-right: 0; }
+      .prob-grid { grid-template-columns: 1fr; }
+      .ov-layout { grid-template-columns: 1fr; gap: 40px; }
+      .str-grid { grid-template-columns: 1fr; }
+      .res-nums { grid-template-columns: 1fr 1fr; }
+      .why-cols { grid-template-columns: 1fr; }
+      .why-highlight { flex-direction: column; text-align: center; padding: 40px 28px; }
+      .flow-grid { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SUPPIN</div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#flow">Program</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">招待制就活ラウンジ — Invitation Only</div>
+    <h1 class="hero-title">
+      <span>SUPPIN</span>
+      優秀な学生と、<br>本質的な<br>マッチングを。
+    </h1>
+    <p class="hero-sub">
+      MARCH以上・大手志向の学生30名が集まるクローズドな場。ピッチから座談会・自由交流まで、全員と深く話せる濃密な4時間。
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-dark">無料相談・お問い合わせ</a>
+      <a href="#overview" class="btn-text">サービス詳細を見る</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-n">150<em>名</em></div>
+        <div class="hero-stat-l">累計参加学生数</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">100<em>%</em></div>
+        <div class="hero-stat-l">採用実績率</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n">10<em>+</em></div>
+        <div class="hero-stat-l">平均面談数/社</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="./suppin-hero.jpg.png" alt="SUPPIN — 招待制就活ラウンジ">
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem sec">
+  <div class="container">
+    <div class="sec-label reveal">The Problem</div>
+    <h2 class="sec-title reveal">採用イベント、<br>本当に機能していますか？</h2>
+    <div class="prob-grid reveal">
+      <div class="prob-item">
+        <div class="prob-num">01</div>
+        <h3>量は集まるが、質が伴わない</h3>
+        <p>大手ナビに出稿しても、自社にフィットする学生には出会えない。選考フローが長くなり、コストだけがかかる。</p>
+      </div>
+      <div class="prob-item">
+        <div class="prob-num">02</div>
+        <h3>学生も企業も厚化粧をしすぎている</h3>
+        <p>企業説明会では本音が語れず、学生も本当に知りたい情報にアクセスできない。お互いの認識ズレが、入社後のミスマッチを生む。</p>
+      </div>
+      <div class="prob-item">
+        <div class="prob-num">03</div>
+        <h3>中小・ベンチャーは土俵に上がれない</h3>
+        <p>大手志向の学生には最初から眼中にない、という思い込みがある。正しく知ってもらう機会がないだけでは。</p>
+      </div>
+      <div class="prob-item">
+        <div class="prob-num">04</div>
+        <h3>採用後の離職・ミスマッチが絶えない</h3>
+        <p>「なんとなく」で就職した学生は早期に離職する。新卒採用のミスマッチは、企業にとっても大きな損失だ。</p>
+      </div>
+    </div>
+    <div class="prob-bridge reveal">
+      <p>学生も企業も、本当のすっぴんで向き合える場があれば——<br>お互いにとってよりよいマッチングが実現できるはずだ。</p>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="overview sec" id="overview">
+  <div class="container">
+    <div class="sec-label reveal">Service Overview</div>
+    <h2 class="sec-title reveal">SUPPINとは</h2>
+    <div class="ov-layout">
+      <div class="ov-text reveal">
+        <p>SUPPINは、<strong>大手志向の優秀な学生・大手若手社員・中小ベンチャー企業による三者間クローズドイベント</strong>です。「素っぴんでいいよね」がコンセプト。観葉植物・打ちっぱなしの壁・焚き火を囲むような空間で、全員が私服で参加します。</p>
+        <p>スーツを着たお堅いイベントではなく、かしこまった場では生まれないリアルな本音が自然に引き出される場を設計しています。企業が「採用に困っている」と映らないよう、MCによる紹介・ティーアップ・連絡先交換のタイミングまで徹底設計。</p>
+        <p>「ここに来ている企業はいい企業だ」という印象を与えながら、しっかりと魅力が伝わる。それがSUPPINの場づくりです。</p>
+      </div>
+      <div class="ov-card reveal">
+        <div class="ov-card-label">参加メンバー構成</div>
+        <div class="ov-member">
+          <div>
+            <div class="ov-member-name">大手志向の優秀な学生</div>
+            <div class="ov-member-note">MARCH以上 ／ 招待制 ／ 有料参加</div>
+          </div>
+          <div class="ov-member-n">30<span>名</span></div>
+        </div>
+        <div class="ov-member">
+          <div>
+            <div class="ov-member-name">中小・ベンチャー企業</div>
+            <div class="ov-member-note">採用を強化したい成長企業</div>
+          </div>
+          <div class="ov-member-n">3<span>社</span></div>
+        </div>
+        <div class="ov-member">
+          <div>
+            <div class="ov-member-name">大手企業の若手社員</div>
+            <div class="ov-member-note">入社3〜5年目 ／ 完全コネクション</div>
+          </div>
+          <div class="ov-member-n">5<span>名</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="strengths sec">
+  <div class="container">
+    <div class="sec-label reveal">3 Key Strengths</div>
+    <h2 class="sec-title reveal">他にない採用イベント、<br>3つの強み。</h2>
+    <div class="str-grid reveal">
+      <div class="str-item">
+        <div class="str-n">01</div>
+        <div class="str-tag">Atmosphere</div>
+        <h3>唯一無二の「雰囲気」</h3>
+        <p>観葉植物・打ちっぱなし・焚き火を囲むエモい空間で、全員が私服で参加。かしこまった場では生まれないリアルな本音が自然に引き出されます。SUPPINチームのMCが会全体を進行し、素の状態で話せる場を作ります。</p>
+      </div>
+      <div class="str-item">
+        <div class="str-n">02</div>
+        <div class="str-tag">Design</div>
+        <h3>企業の「格」が上がる設計</h3>
+        <p>参加企業が「採用に困っている」と映らないよう徹底設計。MCによる紹介・ティーアップ・連絡先交換のタイミングまですべてコントロール。プレゼンは事前に添削済み、当日もリアルタイムで補填します。</p>
+      </div>
+      <div class="str-item">
+        <div class="str-n">03</div>
+        <div class="str-tag">Student Quality</div>
+        <h3>確かな「学生の質」</h3>
+        <p>MARCH以上・大手志向・招待制・有料参加という複数のフィルターで、熱意と能力を兼ね備えた学生が自然にスクリーニングされます。WorldCareerSummit社との提携でMeta広告によるクローズド集客も可能です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE -->
+<section class="scene sec">
+  <div class="container">
+    <div class="sec-label reveal">Event Scene</div>
+    <h2 class="sec-title reveal">実際の様子</h2>
+    <div class="scene-layout reveal">
+      <div class="scene-video">
+        <video
+          src="./すっぴん.mov"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+      </div>
+      <div class="scene-photos">
+        <div class="scene-photo">
+          <img src="./suppin-event-1.jpg" alt="SUPPINイベントの様子"
+               onerror="this.parentElement.innerHTML='<div class=\'scene-photo-placeholder\'><span>Photo 01</span><span style=\'font-size:10px;color:var(--border)\'>suppin-event-1.jpg</span></div>'">
+        </div>
+        <div class="scene-photo">
+          <div class="scene-photo-placeholder">
+            <span>Photo 02</span>
+            <span style="font-size:10px;color:var(--border)">suppin-event-2.jpg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results sec" id="results">
+  <div class="container">
+    <div class="sec-label reveal">Track Record</div>
+    <h2 class="sec-title reveal">圧倒的な、採用実績。</h2>
+    <div class="res-nums reveal">
+      <div class="res-cell">
+        <div class="res-n">15<sub>回+</sub></div>
+        <div class="res-label">累計<br>イベント開催数</div>
+      </div>
+      <div class="res-cell">
+        <div class="res-n">150<sub>名</sub></div>
+        <div class="res-label">SUPPIN<br>累計参加学生数</div>
+      </div>
+      <div class="res-cell">
+        <div class="res-n">100<sub>%</sub></div>
+        <div class="res-label">参加全社<br>採用実績達成率</div>
+      </div>
+      <div class="res-cell">
+        <div class="res-n">10<sub>+</sub></div>
+        <div class="res-label">1社あたり<br>平均面談獲得数</div>
+      </div>
+    </div>
+    <div class="res-list reveal">
+      <div class="res-list-item"><div class="res-dot"></div>過去参加した全企業で最低1名以上の採用を実現（採用実績率100%）</div>
+      <div class="res-list-item"><div class="res-dot"></div>1社あたり平均10面談以上を1イベントで獲得</div>
+      <div class="res-list-item"><div class="res-dot"></div>ベスト事例：1社でインターン生5名の採用が1イベントで決定</div>
+      <div class="res-list-item"><div class="res-dot"></div>参加学生の約50%が、イベント後に中小・ベンチャー企業への興味を持つように変化</div>
+      <div class="res-list-item"><div class="res-dot"></div>15名〜500名規模まで多様なイベント経験を持つチームが一貫してサポート</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why sec">
+  <div class="container">
+    <div class="sec-label reveal">Why It Works</div>
+    <h2 class="sec-title reveal">なぜ、大手志向の学生が<br>中小・ベンチャーに興味を持つのか。</h2>
+    <div class="why-cols reveal">
+      <div class="why-block">
+        <div class="why-label">集客力</div>
+        <h3>学生が「来たい」と思う場づくり</h3>
+        <p>大手志向の学生が本当に欲しい情報は「大手のリアル」です。人事や役員ではなく、入社3〜5年目の若手社員が語る忖度なしの話。それをSUPPINの完全コネクションで実現しているからこそ、有料参加でも「来たい」と思わせる唯一無二の価値が生まれます。</p>
+      </div>
+      <div class="why-block">
+        <div class="why-label">訴求設計</div>
+        <h3>インサイトを理解した設計</h3>
+        <p>大手志向の学生の多くは「大手に行きたい明確な理由」を持っていません。ブランド名で選ぶしかないだけ。大手のリアルを知った上で中小・ベンチャーの魅力を正しく伝えることで、「自分には中小ベンチャーの方が合うかも」という自然な気づきが生まれます。</p>
+      </div>
+    </div>
+    <div class="why-highlight reveal">
+      <p>大手と中小の<em>両方のリアルを知った上で</em>、学生が自ら選ぶ。<br>その設計が、高い面談転換率を生み出している。</p>
+      <div class="why-big">
+        <div class="why-big-n">50<em>%</em></div>
+        <div class="why-big-l">参加学生のうち<br>中小・ベンチャーに興味を持つ割合</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT FLOW -->
+<section class="flow sec" id="flow">
+  <div class="container">
+    <div class="sec-label reveal">Event Program</div>
+    <h2 class="sec-title reveal">当日の流れ — 濃密な4時間</h2>
+    <div class="flow-grid reveal">
+      <div class="flow-item">
+        <div class="flow-part">Part 01</div>
+        <div class="flow-time">各社15分 × 3社</div>
+        <h3>ピッチ・プレゼンテーション</h3>
+        <p>事前にSUPPINチームが添削・ブラッシュアップした各社のピッチ。MCのティーアップで学生に「話を聞く価値」を先に伝えてから臨みます。当日もリアルタイムでMCが補填しながら進行します。</p>
+      </div>
+      <div class="flow-item">
+        <div class="flow-part">Part 02</div>
+        <div class="flow-time">10分 × 5〜6ローテーション</div>
+        <h3>少人数座談会</h3>
+        <p>5〜6名グループでローテーション。MCが毎回のタイミングで連絡先交換を促すため、企業側が「必死」に見えるアプローチは一切不要。大手若手社員との対話が学生の価値観を揺り動かし、自然に興味へとつながります。</p>
+      </div>
+      <div class="flow-item">
+        <div class="flow-part">Part 03</div>
+        <div class="flow-time">自由解散まで</div>
+        <h3>自由交流・ネットワーキング</h3>
+        <p>まだ話し足りない学生と自由に交流。毎回「帰る時間が遅れる」ほど盛り上がるのがSUPPINの特徴。新たに興味を持った学生へのアプローチや面談設定など、企業にとって大きなチャンスタイムです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE FLOW -->
+<section class="sflow sec">
+  <div class="container">
+    <div class="sec-label reveal">How It Works</div>
+    <h2 class="sec-title reveal">ご利用の流れ</h2>
+    <div class="sflow-list reveal">
+      <div class="sflow-item">
+        <div class="sflow-step">Step 01</div>
+        <div class="sflow-body">
+          <h3>初回打ち合わせ</h3>
+          <p>全体の流れのご説明と、採用課題・KPI・ご要望のヒアリングを行います。どんな学生に会いたいか、何名の採用を目指すかなどを丁寧に確認します。</p>
+        </div>
+      </div>
+      <div class="sflow-item">
+        <div class="sflow-step">Step 02</div>
+        <div class="sflow-body">
+          <h3>プレゼンテーション ヒアリング・添削</h3>
+          <p>当日のピッチ内容をヒアリングし、学生に刺さる訴求軸にブラッシュアップします。通常は単独サービス「リクルートメントヘルスチェック」として提供しているものを、SUPPIN参加企業には特別に含めています。</p>
+        </div>
+      </div>
+      <div class="sflow-item">
+        <div class="sflow-step">Step 03</div>
+        <div class="sflow-body">
+          <h3>納品面談・当日スケジュール共有</h3>
+          <p>添削したプレゼン内容を納品・確認。あわせて当日のタイムテーブルや立ち回りについてご説明します。</p>
+        </div>
+      </div>
+      <div class="sflow-item">
+        <div class="sflow-step">Step 04</div>
+        <div class="sflow-body">
+          <h3>イベント当日</h3>
+          <p>ピッチ→座談会→自由交流の3部構成で、SUPPINチームがMCとして全体進行をサポート。企業の方はプレゼンと交流に集中していただければOKです。</p>
+        </div>
+      </div>
+      <div class="sflow-item">
+        <div class="sflow-step">Step 05</div>
+        <div class="sflow-body">
+          <h3>フィードバック面談</h3>
+          <p>当日のアンケート結果を一緒に分析。学生の印象・面談転換率・今後の採用活動への示唆をお伝えします。次のアクションにつながる具体的なフィードバックを提供します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>まず、話しましょう。</h2>
+  <p>採用課題・参加人数・ご予算など、どんなことでもお気軽にご相談ください。</p>
+  <a href="#contact" class="btn-cream">お問い合わせフォームへ</a>
+</section>
+
+<!-- FAQ -->
+<section class="faq sec" id="faq">
+  <div class="container">
+    <div class="sec-label reveal">FAQ</div>
+    <h2 class="sec-title reveal">よくあるご質問</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <span class="faq-q-mark">Q.</span>
+            <span class="faq-q-text">1社単独での開催は可能ですか？</span>
+          </div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">可能です。通常は3社合同で開催していますが、1社単独での開催もご要望に応じてご相談可能です。料金形態や集客規模が異なりますので、まずはお問い合わせいただき、KPIや採用目標をお聞かせください。最適なプランをご提案します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <span class="faq-q-mark">Q.</span>
+            <span class="faq-q-text">大手若手社員の存在が「ノイズ」になりませんか？</span>
+          </div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">ご安心ください。大手社員の話を聞いて「やはり大手に行きたい」となる学生は、そもそも中小・ベンチャーのターゲット外です。重要なのは、リアルを知ることで「実は中小ベンチャーの方が合うかも」と気づく学生が確実に存在するという事実。実際、参加学生の約50%がイベント後に中小・ベンチャーへの興味を示しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <span class="faq-q-mark">Q.</span>
+            <span class="faq-q-text">開催頻度はどのくらいですか？</span>
+          </div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">定期開催ではなく、企業様のご要望があった時のみ開催しています。ご希望のイベント日から逆算して2〜3ヶ月前にはご連絡いただけると、大手若手社員のキャスティング・学生集客・プレゼン添削などの準備を万全に整えることができます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <span class="faq-q-mark">Q.</span>
+            <span class="faq-q-text">採用担当者は当日何をすればいいですか？</span>
+          </div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">プレゼンテーションと学生との交流に専念していただくだけで構いません。MC進行・連絡先交換のタイミング促し・会全体の雰囲気づくりはSUPPINチームが担当します。当日の立ち回りについては、Step 03の打ち合わせで詳しくご説明します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <span class="faq-q-mark">Q.</span>
+            <span class="faq-q-text">学生の学歴・属性はどのようなものですか？</span>
+          </div>
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-a">基本的にMARCH以上の大手志向の学生を対象としています。招待制・有料参加という仕組みにより、熱意と行動力を持つ学生が自然にスクリーニングされます。さらにWorldCareerSummit社との提携により、Meta広告でのクローズドかつ精密な集客も可能です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact sec" id="contact">
+  <div class="container">
+    <div class="sec-label reveal">Contact</div>
+    <h2 class="sec-title reveal">お問い合わせ</h2>
+    <div class="contact-layout">
+      <div class="reveal">
+        <div class="contact-left">
+          <h3>まずは、お気軽に<br>ご相談ください。</h3>
+          <p>採用課題・ご予算・スケジュールなど、どんなことでもお気軽にどうぞ。お問い合わせ後、3営業日以内にご連絡いたします。</p>
+        </div>
+        <div class="contact-pts">
+          <div class="contact-pt">開催希望日の2〜3ヶ月前のご相談を推奨しています</div>
+          <div class="contact-pt">1社単独・複数社合同、いずれもご相談可能です</div>
+          <div class="contact-pt">初回相談は無料です</div>
+        </div>
+      </div>
+      <div class="form reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">会社名<em>*</em></label>
+            <input type="text" placeholder="株式会社〇〇">
+          </div>
+          <div class="form-group">
+            <label class="form-label">お名前<em>*</em></label>
+            <input type="text" placeholder="山田 太郎">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス<em>*</em></label>
+          <input type="email" placeholder="yourname@company.co.jp">
+        </div>
+        <div class="form-group">
+          <label class="form-label">開催希望時期</label>
+          <select>
+            <option value="" disabled selected>選択してください</option>
+            <option>1〜2ヶ月以内</option>
+            <option>2〜3ヶ月後</option>
+            <option>3〜6ヶ月後</option>
+            <option>未定（まずは話を聞きたい）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">採用課題・ご要望</label>
+          <textarea placeholder="現在の採用課題や、SUPPINに期待することをご自由にお書きください。"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit(event)">送信する →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SUPPIN</div>
+  <div class="footer-copy">© 2024 SUPPIN. All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // FAQ
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = '送信しました ✓';
+    btn.style.background = 'var(--olive)';
+    setTimeout(() => { btn.textContent = '送信する →'; btn.style.background = ''; }, 3000);
+  }
+
+  // Nav highlight
+  const secs = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--forest)' : '';
+    });
+  });
+</script>
+</body>
+</html>
