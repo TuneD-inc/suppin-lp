@@ -995,25 +995,75 @@
     /* ── FOOTER ── */
     footer {
       background: var(--forest);
-      padding: 36px 48px;
+      padding: 56px 48px 36px;
+    }
+
+    .footer-top {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
+      margin-bottom: 40px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(242,237,229,0.12);
     }
 
     .footer-logo {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 700;
       letter-spacing: 0.22em;
       color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .footer-tagline {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: rgba(242,237,229,0.4);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-company {
+      text-align: right;
+    }
+
+    .footer-company-name {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .footer-company-address {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: rgba(242,237,229,0.4);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .footer-company-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(242,237,229,0.5);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(242,237,229,0.2);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .footer-company-link:hover {
+      color: var(--cream);
+      border-color: rgba(242,237,229,0.6);
     }
 
     .footer-copy {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 10px;
       letter-spacing: 0.1em;
-      color: rgba(242,237,229,0.3);
+      color: rgba(242,237,229,0.25);
     }
 
     /* ── REVEAL ── */
@@ -1043,7 +1093,9 @@
       .flow-grid { grid-template-columns: 1fr; }
       .contact-layout { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
+      footer { padding: 44px 24px 32px; }
+      .footer-top { flex-direction: column; gap: 32px; }
+      .footer-company { text-align: left; }
     }
   </style>
 </head>
@@ -1445,24 +1497,25 @@
           <div class="contact-pt">初回相談は無料です</div>
         </div>
       </div>
-      <div class="form reveal">
+      <form class="form reveal" name="contact" method="POST" netlify>
+        <input type="hidden" name="form-name" value="contact">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">会社名<em>*</em></label>
-            <input type="text" placeholder="株式会社〇〇">
+            <input type="text" name="company" placeholder="株式会社〇〇" required>
           </div>
           <div class="form-group">
             <label class="form-label">お名前<em>*</em></label>
-            <input type="text" placeholder="山田 太郎">
+            <input type="text" name="name" placeholder="山田 太郎" required>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">メールアドレス<em>*</em></label>
-          <input type="email" placeholder="yourname@company.co.jp">
+          <input type="email" name="email" placeholder="yourname@company.co.jp" required>
         </div>
         <div class="form-group">
           <label class="form-label">開催希望時期</label>
-          <select>
+          <select name="timing">
             <option value="" disabled selected>選択してください</option>
             <option>1〜2ヶ月以内</option>
             <option>2〜3ヶ月後</option>
@@ -1472,18 +1525,28 @@
         </div>
         <div class="form-group">
           <label class="form-label">採用課題・ご要望</label>
-          <textarea placeholder="現在の採用課題や、SUPPINに期待することをご自由にお書きください。"></textarea>
+          <textarea name="message" placeholder="現在の採用課題や、SUPPINに期待することをご自由にお書きください。"></textarea>
         </div>
-        <button class="form-submit" onclick="handleSubmit(event)">送信する →</button>
-      </div>
+        <button type="submit" class="form-submit">送信する →</button>
+      </form>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">SUPPIN</div>
-  <div class="footer-copy">© 2024 SUPPIN. All rights reserved.</div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">SUPPIN</div>
+      <div class="footer-tagline">招待制就活ラウンジ</div>
+    </div>
+    <div class="footer-company">
+      <div class="footer-company-name">株式会社TuneD</div>
+      <div class="footer-company-address">東京都新宿区新宿1丁目36番7号<br>新宿内野ビルII 7F</div>
+      <a href="https://tuned-hp.netlify.app/" target="_blank" rel="noopener" class="footer-company-link">Corporate Website ↗</a>
+    </div>
+  </div>
+  <div class="footer-copy">© 2025 SUPPIN / 株式会社TuneD. All rights reserved.</div>
 </footer>
 
 <script>
