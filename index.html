@@ -1497,7 +1497,7 @@
           <div class="contact-pt">初回相談は無料です</div>
         </div>
       </div>
-      <form class="form reveal" action="https://formspree.io/f/xqeojqjd" method="POST">
+      <form class="form reveal" id="contact-form" action="https://formspree.io/f/xqeojqjd" method="POST">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">会社名<em>*</em></label>
@@ -1542,7 +1542,7 @@
     <div class="footer-company">
       <div class="footer-company-name">株式会社TuneD</div>
       <div class="footer-company-address">東京都新宿区新宿1丁目36番7号<br>新宿内野ビルII 7F</div>
-      <a href="https://tuned-hp.netlify.app/" target="_blank" rel="noopener" class="footer-company-link">Corporate Website ↗</a>
+      <a href="https://tunedinc.jp/" target="_blank" rel="noopener" class="footer-company-link">Corporate Website ↗</a>
     </div>
   </div>
   <div class="footer-copy">© 2025 SUPPIN / 株式会社TuneD. All rights reserved.</div>
@@ -1563,13 +1563,38 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // Form
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target;
-    btn.textContent = '送信しました ✓';
-    btn.style.background = 'var(--olive)';
-    setTimeout(() => { btn.textContent = '送信する →'; btn.style.background = ''; }, 3000);
+  // Form (Formspree AJAX)
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = contactForm.querySelector('button[type="submit"]');
+      btn.textContent = '送信中…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          contactForm.innerHTML = `
+            <div style="text-align:center;padding:48px 24px;">
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:0.2em;color:var(--olive-mid);margin-bottom:16px;">THANK YOU</div>
+              <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:20px;font-weight:700;color:var(--forest);margin-bottom:12px;">お問い合わせを受け付けました</div>
+              <div style="font-size:14px;color:var(--warm-gray);line-height:1.8;">3営業日以内に担当者よりご連絡いたします。</div>
+            </div>`;
+        } else {
+          btn.textContent = '送信する →';
+          btn.disabled = false;
+          alert('送信に失敗しました。時間をおいて再度お試しください。');
+        }
+      } catch {
+        btn.textContent = '送信する →';
+        btn.disabled = false;
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+      }
+    });
   }
 
   // Nav highlight
